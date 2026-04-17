@@ -82,3 +82,44 @@ export const getNoteById = async (req, res) => {
     });
   }
 };
+
+// 4. PUT /api/notes/:id
+export const updateNote = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Note ID",
+        data: null,
+      });
+    }
+
+    const updatedNote = await Note.findByIdAndUpdate(id, req.body, {
+      new: true,
+      overwrite: true,
+      runValidators: true,
+    });
+
+    if (!updatedNote) {
+      return res.status(404).json({
+        success: false,
+        message: "Note not found",
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Note updated successfully",
+      data: updatedNote,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
+  }
+};
