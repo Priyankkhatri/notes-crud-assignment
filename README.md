@@ -1,6 +1,5 @@
 # 📝 Notes Management API
 
-![Notes API Banner](https://raw.githubusercontent.com/Priyankkhatri/notes-crud-assignment/main/banner.png)
 
 ### 📡 [API Status](https://notes-crud-api.onrender.com) | 📄 [Postman Documentation](https://documenter.getpostman.com/view/YOUR_ID/YOUR_LINK)
 
